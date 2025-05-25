@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@primeuix/themes": "^1.1.1",
+    "@tailwindcss/vite": "^4.1.7",
+    "primevue": "^4.3.4",
+    "tailwindcss": "^4.1.7"
+  },
+  "devDependencies": {
+    "@primevue/auto-import-resolver": "^4.3.4",
+    "unplugin-vue-components": "^28.5.0",
+    "vitest": "^3.1.4"
+  }
+}
