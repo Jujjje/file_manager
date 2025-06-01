@@ -1,8 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { HeaderWidget } from '@/widgets/header'
+</script>
 <template>
-  <main>
-    <h1>Playground</h1>
-    <InputText v-model="msg" />
-    <p>{{ msg }}</p>
-  </main>
+  <div class="py-3 px-4"><HeaderWidget /></div>
 </template>
