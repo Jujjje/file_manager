@@ -48,6 +48,7 @@ const categories = ref([
         @click="isActive = i"
         :class="i == isActive ? activeNav : inActiveNav"
         v-for="(item, i) in list"
+        :key="i"
       >
         <component class="size-5" :is="item.icon" />
         <p class="">{{ item.txt }}</p>
@@ -58,7 +59,11 @@ const categories = ref([
         <p>Workspaces</p>
         <ArrowIcon />
       </div>
-      <div class="rounded-lg flex items-center gap-x-3 py-2 px-4" v-for="(item, i) in workSpaces">
+      <div
+        class="rounded-lg flex items-center gap-x-3 py-2 px-4"
+        v-for="(item, i) in workSpaces"
+        :key="i"
+      >
         <component class="size-5" :is="item.icon" />
         <p class="">{{ item.txt }}</p>
       </div>
@@ -68,7 +73,11 @@ const categories = ref([
         <p>Categories</p>
         <ArrowIcon />
       </div>
-      <div class="rounded-lg flex items-center gap-x-3 py-2 px-4" v-for="(item, i) in categories">
+      <div
+        class="rounded-lg flex items-center gap-x-3 py-2 px-4"
+        v-for="(item, i) in categories"
+        :key="i"
+      >
         <component class="size-5" :is="item.icon" />
         <p class="">{{ item.txt }}</p>
       </div>
