@@ -12,7 +12,9 @@ import ImageIcon from './ImageIcon.vue'
 import MusicNoteIcon from './MusicNoteIcon.vue'
 import TrashIcon from './TrashIcon.vue'
 import DocumentIcon from './DocumentIcon.vue'
+import Logout from './Logout.vue'
 export {
+  Logout,
   ImageIcon,
   MusicNoteIcon,
   TrashIcon,

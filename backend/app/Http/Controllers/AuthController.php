@@ -34,7 +34,9 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return ['message' => 'The provided credentinals are incorect'];
+            return [
+                'errors' => ['email' => 'The provided credentinals are incorect']
+            ];
         }
 
 
@@ -46,7 +48,6 @@ class AuthController extends Controller
     function logout(Request $request)
     {
         $request->user()->tokens()->delete();
-
         return ['message' => 'The user are logout'];
     }
 }

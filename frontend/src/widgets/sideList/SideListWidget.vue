@@ -14,27 +14,27 @@ import {
   MusicNoteIcon,
   TrashIcon,
 } from '@/shared/assets/icons'
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 
 const isActive = ref(0)
 const activeNav = 'rounded-lg flex items-center gap-x-3 py-2 px-4 bg-blue-500/10'
 const inActiveNav = 'rounded-lg flex items-center gap-x-3 py-2 px-4'
 
-const list = ref([
-  { txt: 'Home', icon: HomeIcon },
-  { txt: 'Workspaces', icon: WorkSpaceIcon },
-  { txt: 'Search', icon: SearchIcon },
-  { txt: 'Notifications', icon: BellIcon },
+const list = shallowRef([
+  { txt: 'Home', icon: HomeIcon, nav: '/' },
+  { txt: 'Workspaces', icon: WorkSpaceIcon, nav: '/' },
+  { txt: 'Search', icon: SearchIcon, nav: '/' },
+  { txt: 'Notifications', icon: BellIcon, nav: '/' },
 ])
 
-const workSpaces = ref([
+const workSpaces = shallowRef([
   { txt: 'College', icon: CollegeIcon },
   { txt: 'Work', icon: WorkIcon },
   { txt: 'Family', icon: FamilyIcon },
   { txt: 'Others', icon: OthersIcon },
 ])
 
-const categories = ref([
+const categories = shallowRef([
   { txt: 'Images', icon: ImageIcon },
   { txt: 'Documents', icon: DocumentIcon },
   { txt: 'Audio', icon: MusicNoteIcon },
@@ -44,7 +44,8 @@ const categories = ref([
 <template>
   <div class="flex flex-col gap-y-10">
     <div class="flex flex-col gap-y-2">
-      <div
+      <RouterLink
+        :to="item.nav"
         @click="isActive = i"
         :class="i == isActive ? activeNav : inActiveNav"
         v-for="(item, i) in list"
@@ -52,7 +53,7 @@ const categories = ref([
       >
         <component class="size-5" :is="item.icon" />
         <p class="">{{ item.txt }}</p>
-      </div>
+      </RouterLink>
     </div>
     <div class="">
       <div class="flex gap-2 px-4">
