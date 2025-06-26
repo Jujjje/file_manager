@@ -11,8 +11,11 @@ const signinContent = reactive([{ input: '' }, { input: '' }, { input: '' }, { i
 <template>
   <div class="py-3 px-4 flex flex-col justify-center items-center h-full gap-y-14">
     <div class="flex flex-col gap-y-1.5 text-center w-96">
-      <p class="text-[30px] font-bold">Create account</p>
+      <p class="text-[30px] font-bold mb-5">Create account</p>
       <p class="font-bold">Create an account so you can explore all the file manager features</p>
+      <RouterLink class="font-bold text-[18px]" to="/login"
+        >Or click here if you already hane an account</RouterLink
+      >
     </div>
     <form
       class="flex flex-col w-96 gap-y-7"

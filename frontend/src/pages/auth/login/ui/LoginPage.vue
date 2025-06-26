@@ -6,7 +6,7 @@ import { reactive, watch } from 'vue'
 const store = useUserStore()
 const { errors } = storeToRefs(store)
 
-const signinContent = reactive([{ input: '' }, { input: '' }])
+const loginContent = reactive([{ input: '' }, { input: '' }])
 </script>
 <template>
   <div class="py-3 px-4 flex flex-col justify-center items-center h-full gap-y-14">
@@ -19,8 +19,8 @@ const signinContent = reactive([{ input: '' }, { input: '' }])
       @submit.prevent="
         () =>
           store.authentificate('login', {
-            email: signinContent[0].input,
-            password: signinContent[1].input,
+            email: loginContent[0].input,
+            password: loginContent[1].input,
           })
       "
     >
@@ -30,7 +30,7 @@ const signinContent = reactive([{ input: '' }, { input: '' }])
           class="h-16 w-96 pl-5 pr-9 py-5 bg-blue-50 rounded-[10px]"
           name="email"
           placeholder="Email"
-          v-model="signinContent[0].input"
+          v-model="loginContent[0].input"
           required
         />
         <p class="text-red-600" v-if="errors">
@@ -48,7 +48,7 @@ const signinContent = reactive([{ input: '' }, { input: '' }])
           name="password"
           placeholder="Password"
           class="h-16 w-96 pl-5 pr-9 py-5 bg-blue-50 rounded-[10px]"
-          v-model="signinContent[1].input"
+          v-model="loginContent[1].input"
           required
         />
         <p class="text-red-600" v-if="errors?.password">{{ errors.password[0] }}</p>
