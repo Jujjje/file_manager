@@ -22,6 +22,7 @@ console.log(posts.value)
         <p class="font-bold text-[20px]">{{ post.title }}</p>
         <p class="text-gray-400">Posted by {{ post.user.name }}</p>
         <p>{{ post.body }}</p>
+        <RouterLink class="text-blue-500" :to="'/post/' + post.id">Read more...</RouterLink>
       </div>
     </div>
   </div>

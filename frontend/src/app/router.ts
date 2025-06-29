@@ -1,6 +1,6 @@
 import { LoginPage, RegisterPage } from '@/pages/auth'
 import { HomePage } from '@/pages/home'
-import { CreatePost } from '@/pages/post'
+import { CreatePost, ShowPostPage } from '@/pages/post'
 import { WelcomePage } from '@/pages/welcome'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
@@ -10,6 +10,7 @@ const routes = [
   { path: '/login', component: LoginPage, meta: { guest: true }, name: 'login' },
   { path: '/create', component: CreatePost, meta: { auth: true } },
   { path: '/welcome', component: WelcomePage, meta: { guest: true }, name: 'welcome' },
+  { path: '/post/:id', component: ShowPostPage, meta: { auth: true } },
 ]
 
 const router = createRouter({

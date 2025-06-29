@@ -47,7 +47,8 @@ class PostController extends Controller implements HasMiddleware
      */
     public function show(Post $post)
     {
-        return ['post' => $post, 'user' => $post->user];
+        $post->load('user');
+        return $post;
     }
 
     /**
@@ -63,8 +64,9 @@ class PostController extends Controller implements HasMiddleware
         ]);
 
         $post->update($fields);
-
-        return ['post' => $post];
+        
+        $post->load('user');
+        return $post;
     }
 
     /**
@@ -76,6 +78,6 @@ class PostController extends Controller implements HasMiddleware
 
         $post->delete();
 
-        return 'The post was deleted';
+        return ['message' => 'The post was deleted'];
     }
 }

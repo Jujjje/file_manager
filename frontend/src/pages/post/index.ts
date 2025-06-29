@@ -1,2 +1,3 @@
 import CreatePost from './createPost/CreatePost.vue'
-export { CreatePost }
+import ShowPostPage from './showPost/ShowPostPage.vue'
+export { CreatePost, ShowPostPage }

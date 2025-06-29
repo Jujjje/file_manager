@@ -5,6 +5,7 @@ import { ref } from 'vue'
 export const usePostStore = defineStore('post', () => {
   const errors = ref()
   const posts = ref<IPost[]>()
+  const post = ref<IPost>()
 
   async function getAllPosts() {
     const res = await fetch('/api/posts')
@@ -16,6 +17,17 @@ export const usePostStore = defineStore('post', () => {
       console.log(posts.value)
     }
   }
+
+  async function getPost(id: number) {
+    const res = await fetch(`/api/posts/${id}`)
+    const data = await res.json()
+    if (data.errors) {
+      errors.value = data
+    } else {
+      post.value = data
+    }
+  }
+
   async function createPost(formData: IFormData) {
     const res = await fetch('/api/posts', {
       method: 'Post',
@@ -33,5 +45,34 @@ export const usePostStore = defineStore('post', () => {
       console.log(data)
     }
   }
-  return { errors, posts, createPost, getAllPosts }
+
+  async function deletePost(id: number) {
+    const res = await fetch(`/api/posts/${id}`, {
+      method: 'Delete',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+    const data = await res.json()
+    console.log(data)
+    //@ts-ignore explanation in main.ts
+    this.router.push('/')
+  }
+
+  async function updatePost(formData: IFormData, id: number) {
+    const res = await fetch(`/api/posts/${id}`, {
+      method: 'put',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify(formData),
+    })
+    const data = await res.json()
+    if (data.errors) {
+      errors.value = data.errors
+    }
+    //@ts-ignore explanation in main.ts
+    this.router.push('/')
+  }
+  return { errors, posts, createPost, getAllPosts, getPost, post, deletePost, updatePost }
 })
