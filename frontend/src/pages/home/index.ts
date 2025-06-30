@@ -1,2 +1,2 @@
-import HomePage from './HomePage.vue'
+import HomePage from './ui/HomePage.vue'
 export { HomePage }

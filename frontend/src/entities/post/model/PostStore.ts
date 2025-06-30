@@ -10,6 +10,7 @@ export const usePostStore = defineStore('post', () => {
   async function getAllPosts() {
     const res = await fetch('/api/posts')
     const data = await res.json()
+
     if (data.errors) {
       errors.value = data
     } else {
@@ -21,6 +22,7 @@ export const usePostStore = defineStore('post', () => {
   async function getPost(id: number) {
     const res = await fetch(`/api/posts/${id}`)
     const data = await res.json()
+
     if (data.errors) {
       errors.value = data
     } else {
@@ -42,7 +44,8 @@ export const usePostStore = defineStore('post', () => {
     if (data.errors) {
       errors.value = data.errors
     } else {
-      console.log(data)
+      //@ts-ignore explanation in main.ts
+      this.router.push('/')
     }
   }
 
@@ -53,13 +56,18 @@ export const usePostStore = defineStore('post', () => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
+
     const data = await res.json()
-    console.log(data)
+
+    if (data.errors) {
+      errors.value = data.errors
+    }
+
     //@ts-ignore explanation in main.ts
     this.router.push('/')
   }
 
-  async function updatePost(formData: IFormData, id: number) {
+  async function updatePost(formData: IFormData, id: number | undefined) {
     const res = await fetch(`/api/posts/${id}`, {
       method: 'put',
       headers: {
@@ -67,12 +75,16 @@ export const usePostStore = defineStore('post', () => {
       },
       body: JSON.stringify(formData),
     })
+
     const data = await res.json()
+
     if (data.errors) {
       errors.value = data.errors
     }
+
     //@ts-ignore explanation in main.ts
     this.router.push('/')
   }
+
   return { errors, posts, createPost, getAllPosts, getPost, post, deletePost, updatePost }
 })

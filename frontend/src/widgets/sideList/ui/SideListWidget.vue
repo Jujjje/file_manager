@@ -55,6 +55,7 @@ const categories = shallowRef([
         <p class="">{{ item.txt }}</p>
       </RouterLink>
     </div>
+
     <div class="">
       <div class="flex gap-2 px-4">
         <p>Workspaces</p>
@@ -69,6 +70,7 @@ const categories = shallowRef([
         <p class="">{{ item.txt }}</p>
       </div>
     </div>
+
     <div class="">
       <div class="flex gap-2 px-4">
         <p>Categories</p>

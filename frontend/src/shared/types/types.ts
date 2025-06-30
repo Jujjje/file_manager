@@ -6,8 +6,8 @@ export interface IUser {
 }
 
 export interface IFormData {
-  title: string
-  body: string
+  title: string | undefined
+  body: string | undefined
 }
 
 export interface IPost {

@@ -8,9 +8,9 @@ const routes = [
   { path: '/', component: HomePage, meta: { guest: true }, name: '/' },
   { path: '/register', component: RegisterPage, meta: { guest: true }, name: 'register' },
   { path: '/login', component: LoginPage, meta: { guest: true }, name: 'login' },
-  { path: '/create', component: CreatePost, meta: { auth: true } },
+  { path: '/create', component: CreatePost, meta: { auth: true }, name: 'create' },
   { path: '/welcome', component: WelcomePage, meta: { guest: true }, name: 'welcome' },
-  { path: '/post/:id', component: ShowPostPage, meta: { auth: true } },
+  { path: '/post/:id', component: ShowPostPage, meta: { auth: true }, name: 'post' },
 ]
 
 const router = createRouter({
@@ -18,10 +18,7 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach(async (to, from) => {
-  // const store = useUserStore()
-  // const { user } = storeToRefs(store)
-
+router.beforeEach(async (to) => {
   if (
     !localStorage.getItem('token') &&
     to.name !== 'register' &&

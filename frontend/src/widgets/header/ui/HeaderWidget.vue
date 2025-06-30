@@ -3,6 +3,7 @@ import { useUserStore } from '@/entities/user'
 import { HomeIcon, UploadIcon, ArrowIcon, Logout } from '@/shared/assets/icons'
 import { DefaultAvatar } from '@/shared/assets/imgs'
 import { storeToRefs } from 'pinia'
+
 const store = useUserStore()
 const { logout } = store
 const { user } = storeToRefs(store)
@@ -13,6 +14,7 @@ const { user } = storeToRefs(store)
       <HomeIcon />
       <p>Home</p>
     </div>
+
     <input
       type="text"
       placeholder="Search"
@@ -24,11 +26,13 @@ const { user } = storeToRefs(store)
           <UploadIcon />
           <p class="text-white font-medium">Upload file</p>
         </button>
+
         <div class="flex gap-x-3">
           <img :src="DefaultAvatar" alt="" srcset="" />
           <p class="">{{ user.name }}</p>
           <ArrowIcon />
         </div>
+
         <form @submit.prevent="logout()">
           <button class="flex gap-x-1">
             <Logout />
@@ -45,6 +49,7 @@ const { user } = storeToRefs(store)
             <p class="text-white font-medium">Sign in</p>
           </button>
         </RouterLink>
+
         <RouterLink to="/login">
           <button
             class="h-8 p-3 bg-blue-500 rounded-lg inline-flex justify-start items-center gap-2"

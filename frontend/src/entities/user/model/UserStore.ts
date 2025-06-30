@@ -6,6 +6,7 @@ export const useUserStore = defineStore('user', () => {
   const errors = ref()
   const user = ref()
   const token = ref()
+
   async function getUser() {
     if (localStorage.getItem('token')) {
       const res = await fetch('/api/user', {
@@ -33,12 +34,11 @@ export const useUserStore = defineStore('user', () => {
     const data = await res.json()
     if (data.errors) {
       errors.value = data.errors
-      console.log(errors.value)
     } else {
       localStorage.setItem('token', data.token)
       errors.value = null
       token.value = data.user
-      console.log(token.value)
+
       //@ts-ignore explanation in main.ts
       this.router.push('/')
     }
@@ -53,14 +53,14 @@ export const useUserStore = defineStore('user', () => {
     })
 
     const data = await res.json()
-    console.log(data)
 
     if (res.ok) {
       user.value = null
       errors.value = null
       localStorage.removeItem('token')
+
       //@ts-ignore explanation in main.ts
-      this.router.push('/')
+      this.router.push('/welcome')
     }
   }
   return { errors, authentificate, getUser, user, token, logout }

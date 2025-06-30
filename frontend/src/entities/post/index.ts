@@ -1,2 +1,3 @@
 import { usePostStore } from './model/PostStore'
-export { usePostStore }
+import PostUi from './ui/PostUi.vue'
+export { usePostStore, PostUi }
